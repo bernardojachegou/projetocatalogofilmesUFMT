@@ -1,3 +1,14 @@
+<?php
+
+$conn =  mysqli_connect("localhost","root","");
+mysqli_select_db($conn,"catalogo");
+$nome = $_POST['nome'];
+$genero = $_POST['genero'];
+$data = $_POST['data'];
+
+$strInsert = "INSERT INTO filmes (nome, genero, data) VALUES ('".$nome."', '".$genero."', '".$data."')";
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -24,21 +35,21 @@
     <main>
         <h1 class="titulo-principal">Cadastro</h1>
         <div class="container">
-            <form action="" method="post">
+            <form action="catalogo.php" method="POST ">
                 <div>
-                    <label for="Nome">Nome do filme</label>
-                    <input type="text" id="nome" />
+                    <label for="nome">Nome do filme</label>
+                    <input type="text" name="nome" />
                 </div>
                 <div>
-                    <label for="Gênero">Gênero</label>
-                    <input type="text" id=genero />
+                    <label for="genero">Gênero</label>
+                    <input type="text" name="genero" />
                 </div>
                 <div>
-                    <label for="Data">Data de lançamento</label>
-                    <input type="date" id=data />
+                    <label for="data">Data de lançamento</label>
+                    <input type="date" name="data" />
                 </div>
                 <div class=butt>
-                    <button type="submit">Cadastrar</button>
+                    <button type="submit" value=enviar>Cadastrar</button>
                 </div>
             </form>
 

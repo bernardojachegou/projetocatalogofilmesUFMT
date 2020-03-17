@@ -1,3 +1,9 @@
+<?php 
+	$conn =  mysqli_connect("localhost","root","");
+	mysqli_select_db($conn,"catalogo"); 
+    $result = mysqli_query($conn,"SELECT * FROM filmes");
+?>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +17,6 @@
 </header>
 
 <body>
-    
     <nav class="nav">
           <ul>
             <li><a href="index.php">Home</a></li>
@@ -33,11 +38,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>livre</td>
-                        <td>livre</td>
-                        <td>livre</td>
-                   </tr>
+                <?php
+                    $result = mysqli_query($conn,"SELECT * FROM filmes"); 
+                ?> 
+                <?php
+                    while ($filmes = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>".$filmes['nome']."</td>";
+                        echo "<td>".$filmes['genero']."</td>";
+                        echo "<td>".$filmes['data']."</td>";
+                        echo "</tr>";
+                    }
+                ?>
                 </tbody>
             </table>
         </div>
