@@ -1,3 +1,15 @@
+<?php
+$nome = $_POST['nome'];
+$genero = $_POST['genero'];
+$data = $_POST['data'];
+$conn =  mysqli_connect("localhost","root","");
+mysqli_select_db($conn,"catalogo");
+$sql = "INSERT INTO filmes (nome, genero, data) VALUES ('".$nome."', '".$genero."', '".$data."')";; 
+
+mysqli_query($conn, $sql) or die("Erro ao tentar cadastrar registro");
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +35,11 @@
 	
     <main>
         <div class="container">
-            <p>Cadastro efetuado com sucesso!</p>
+            <p class="cadastroSucesso"><?php echo "Cadastro efetuado com sucesso!"?></p>
         </div>
+        <div class=butt>
+            <a class=button href="cadastra.php">VOLTAR</a>
+         </div>
     </main> 
 
 	<footer class="footer">

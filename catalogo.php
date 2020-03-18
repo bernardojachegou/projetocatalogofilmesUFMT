@@ -1,13 +1,16 @@
 <?php 
-	$conn =  mysqli_connect("localhost","root","");
-	mysqli_select_db($conn,"catalogo"); 
+    $conn =  mysqli_connect("localhost","root","");
+    mysqli_select_db($conn,"catalogo"); 
+    /* Pegar os dados do BD*/
     $result = mysqli_query($conn,"SELECT * FROM filmes");
-?>
-	
+
+    ?>
+
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <title>Cast-Filmes</title>
     <link rel="stylesheet" href="css/estiloDasPaginas.css">
 </head>
@@ -18,7 +21,7 @@
 
 <body>
     <nav class="nav">
-          <ul>
+        <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="cadastra.php">Cadastrar</a></li>
             <li><a href="catalogo.php">Catálogo</a></li>
@@ -38,10 +41,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php
+                    <?php
                     $result = mysqli_query($conn,"SELECT * FROM filmes"); 
-                ?> 
-                <?php
+                ?>
+                    <?php
                     while ($filmes = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
                         echo "<td>".$filmes['nome']."</td>";
@@ -55,8 +58,9 @@
         </div>
     </main>
 
-	<footer class="footer">
-		&copy; Michel Bernardo 2020
-	</footer>
+    <footer class="footer">
+        &copy; Michel Bernardo 2020
+    </footer>
 </body>
+
 </html>
